@@ -7,6 +7,7 @@ import PageLayout from '../components/layouts/page-layout';
 import Loader from '../components/loader/loader';
 import Chart from '../components/chart/chart';
 import ProductAdd from '../components/product-add/product-add';
+import Back from '../components/back/back';
 
 const ManagePage = () => {
   const [products, setProducts] = useState<Product[]>();
@@ -38,6 +39,7 @@ const ManagePage = () => {
         <Loader />
       ) : (
         <div className="manage-page">
+          <Back to="/" text="Back to homepage" />
           <h2 className="page-title">Manage products</h2>
 
           <Chart products={products} />
