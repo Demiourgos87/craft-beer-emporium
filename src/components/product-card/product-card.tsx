@@ -21,10 +21,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
       <div className="product-info">
         <p className="product-name">{name}</p>
-        <p className="product-price">Price: {price}</p>
         <p className="product-rating">
           Rating: {average.toFixed(1)} from {reviews} reviews
         </p>
+        <p className="product-price">Price: {price}</p>
       </div>
     </Link>
   );

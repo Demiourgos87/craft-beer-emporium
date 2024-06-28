@@ -6,7 +6,11 @@
   width: 100%;
   max-width: $content-max-width;
   margin: 0 auto;
-  padding: 40px;
+  padding: 20px;
+
+  @media screen and (min-width: $breakpoint-lt-mobile) {
+    padding: 40px;
+  }
 }
 
 .loading {

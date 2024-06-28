@@ -8,3 +8,14 @@ export type Product = {
     reviews: number;
   };
 };
+
+export type SortOption = {
+  key: string;
+  label: string;
+};
+
+export type FilterOption = {
+  key: string;
+  label: string;
+  values: string[];
+};

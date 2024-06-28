@@ -48,11 +48,40 @@ const Homepage = () => {
         });
         break;
 
-      default:
+      case 'price':
+        sorted = [...(products || [])].sort((x, y) => {
+          const xNum = parseFloat(x.price.replace('$', ''));
+          const yNum = parseFloat(y.price.replace('$', ''));
+
+          if (xNum > yNum) return -1;
+          if (xNum < yNum) return 1;
+          return 0;
+        });
         break;
     }
 
     setProducts(sorted);
+  };
+
+  const filterBy = ({ filterBy, val }: { filterBy: string; val: string }) => {
+    let filtered: Product[] = [];
+
+    switch (filterBy) {
+      case 'brands':
+        filtered = [...(products || [])].filter((item) => item.name.includes(val));
+        break;
+
+      case 'rating':
+        filtered = [...(products || [])].filter(
+          (item) => item.rating.average > Math.floor(Number(val.replace('+', ''))),
+        );
+        break;
+
+      default:
+        break;
+    }
+
+    setProducts(filtered);
   };
 
   useEffect(() => {
@@ -67,7 +96,7 @@ const Homepage = () => {
         </div>
       ) : (
         <div className="homepage">
-          <Filters onSortSelect={sortBy} />
+          <Filters onSortSelect={sortBy} onFilterSelect={filterBy} />
           <ProductGrid products={products} />
         </div>
       )}
