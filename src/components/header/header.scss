@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 24px 4%;
+  background-color: $color-primary;
+
+  .brand {
+    &-logo {
+      width: 100px;
+      margin-right: 24px;
+      border-radius: 12px;
+    }
+
+    &-name {
+      color: $color-secondary;
+      font-size: 40px;
+    }
+  }
+}
