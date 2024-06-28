@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import { getProducts } from '../api/api';
-import { Product } from '../constants/types';
+// hooks
+import { useProductStore } from '../store/product-store';
 
 // components
 import PageLayout from '../components/layouts/page-layout';
@@ -10,28 +9,7 @@ import ProductAdd from '../components/product-add/product-add';
 import Back from '../components/back/back';
 
 const ManagePage = () => {
-  const [products, setProducts] = useState<Product[]>();
-
-  const fetchData = async () => {
-    try {
-      const products: Product[] = await getProducts();
-      const sorted = products.sort((x, y) => {
-        if (x.rating.reviews > y.rating.reviews) return -1;
-        if (x.rating.reviews < y.rating.reviews) return 1;
-        return 0;
-      });
-
-      const mostPopular = sorted.slice(0, 10);
-
-      setProducts(mostPopular);
-    } catch (error) {
-      throw new Error('Failed fetching products!');
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const products = useProductStore((state) => state.get10MostPopular());
 
   return (
     <PageLayout>

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProductById } from '../api/api';
-import { Product } from '../constants/types';
+
+// hooks
+import { useProductStore } from '../store/product-store';
 
 // components
 import PageLayout from '../components/layouts/page-layout';
@@ -11,20 +11,7 @@ import Back from '../components/back/back';
 
 const ProductPage = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState<Product>();
-
-  const fetchProduct = async () => {
-    try {
-      const product = await getProductById(id);
-      setProduct(product);
-    } catch (error) {
-      throw new Error('Error fetching product!');
-    }
-  };
-
-  useEffect(() => {
-    fetchProduct();
-  }, []);
+  const product = useProductStore((state) => state.getProductById(id as string));
 
   return (
     <PageLayout>

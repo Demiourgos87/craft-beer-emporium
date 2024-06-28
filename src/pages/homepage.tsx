@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { getProducts } from '../api/api';
+import { useEffect } from 'react';
 import { Product } from '../constants/types';
 
 // components
@@ -8,17 +7,27 @@ import Loader from '../components/loader/loader';
 import Filters from '../components/filters/filters';
 import ProductGrid from '../components/product-grid/product-grid';
 
-const Homepage = () => {
-  const [products, setProducts] = useState<Product[]>();
+// hooks
+import { useProductStore } from '../store/product-store';
 
-  const fetchData = async () => {
-    try {
-      const products = await getProducts();
-      setProducts(products);
-    } catch (error) {
-      throw new Error('Failed fetching products!');
-    }
-  };
+const Homepage = () => {
+  const { products, fetchProducts, setProducts } = useProductStore((state) => ({
+    products: state.products,
+    fetchProducts: state.fetchProducts,
+    setProducts: state.setProducts,
+  }));
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
+  if (!products) {
+    return (
+      <div className="loading">
+        <Loader />
+      </div>
+    );
+  }
 
   const sortBy = (sortBy: string) => {
     let sorted: Product[] = [];
@@ -84,22 +93,12 @@ const Homepage = () => {
     setProducts(filtered);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <PageLayout>
-      {!products ? (
-        <div className="loading">
-          <Loader />
-        </div>
-      ) : (
-        <div className="homepage">
-          <Filters onSortSelect={sortBy} onFilterSelect={filterBy} />
-          <ProductGrid products={products} />
-        </div>
-      )}
+      <div className="homepage">
+        <Filters onSortSelect={sortBy} onFilterSelect={filterBy} />
+        <ProductGrid products={products} />
+      </div>
     </PageLayout>
   );
 };
