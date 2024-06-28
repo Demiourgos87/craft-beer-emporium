@@ -6,6 +6,8 @@ import { Product } from '../constants/types';
 // components
 import PageLayout from '../components/layouts/page-layout';
 import Loader from '../components/loader/loader';
+import ProductInfo from '../components/product-info/product-info';
+import Back from '../components/back/back';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -32,7 +34,9 @@ const ProductPage = () => {
         </div>
       ) : (
         <div className="product-page">
-          PRODUCT WITH ID: {id} AND NAME {product.name}
+          <Back to="/" text="Back to homepage" />
+
+          <ProductInfo product={product} />
         </div>
       )}
     </PageLayout>

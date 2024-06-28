@@ -19,3 +19,9 @@ export type FilterOption = {
   label: string;
   values: string[];
 };
+
+export type IconProps = {
+  color?: string;
+  width?: string;
+  height?: string;
+};
