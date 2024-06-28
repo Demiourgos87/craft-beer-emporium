@@ -30,4 +30,14 @@
       }
     }
   }
+
+  .manage {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #ffffff;
+    padding: 16px;
+    box-shadow: 0 2px 4px 4px rgba(#000000, 0.1);
+    cursor: pointer;
+  }
 }
