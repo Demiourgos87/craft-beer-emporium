@@ -1,4 +1,6 @@
 import { Product } from '../../constants/types';
+import { useProductStore } from '../../store/product-store';
+import Button from '../button/button';
 
 // styles
 import './product-info.scss';
@@ -14,6 +16,11 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
     price,
     rating: { average, reviews },
   } = product;
+  const addToCart = useProductStore((state) => state.addToCart);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
 
   return (
     <div className="single-product-info">
@@ -41,6 +48,10 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
           est laborum.
         </div>
+
+        <div className="separator"></div>
+
+        <Button text="Add to cart" onClick={handleAddToCart} />
       </div>
     </div>
   );

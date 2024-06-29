@@ -8,10 +8,13 @@ type ProductState = {
   fetchProducts: () => Promise<void>;
   getProductById: (id: string) => Product | undefined;
   get10MostPopular: () => Product[] | undefined;
+  cart: Product[] | [];
+  addToCart: (product: Product) => void;
 };
 
 export const useProductStore = create<ProductState>((set, get) => ({
   products: null,
+  cart: [],
   setProducts: (products) => set({ products }),
   fetchProducts: async () => {
     try {
@@ -44,5 +47,10 @@ export const useProductStore = create<ProductState>((set, get) => ({
     }
 
     return undefined;
+  },
+  addToCart: (product: Product) => {
+    const cart = get().cart;
+
+    set({ cart: [...cart, product] });
   },
 }));
