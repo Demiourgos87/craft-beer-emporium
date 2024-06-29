@@ -1,29 +1,57 @@
-import { Product } from '../../constants/types';
+import { useEffect } from 'react';
 import { useProductStore } from '../../store/product-store';
 import Button from '../button/button';
+import IconClose from '../icons/icon-close';
 
 // styles
 import './product-info.scss';
 
 type ProductInfoProps = {
-  product: Product;
+  productId: number;
+  onClose: () => void;
 };
 
-const ProductInfo = ({ product }: ProductInfoProps) => {
+const ProductInfo = ({ productId, onClose }: ProductInfoProps) => {
+  const { getProductById, selectedProduct, setSelectedProduct, removeSelectedProduct, addToCart } =
+    useProductStore((state) => ({
+      getProductById: state.getProductById,
+      selectedProduct: state.selectedProduct,
+      setSelectedProduct: state.setSelectedProduct,
+      removeSelectedProduct: state.removeSelectedProduct,
+      addToCart: state.addToCart,
+    }));
+
+  useEffect(() => {
+    const product = getProductById(`${productId}`);
+    setSelectedProduct(product);
+  }, [selectedProduct]);
+
+  if (!selectedProduct) {
+    return null;
+  }
+
   const {
-    image,
     name,
+    image,
     price,
     rating: { average, reviews },
-  } = product;
-  const addToCart = useProductStore((state) => state.addToCart);
+  } = selectedProduct;
 
   const handleAddToCart = () => {
-    addToCart(product);
+    addToCart(selectedProduct);
+  };
+
+  const handleClose = () => {
+    onClose();
+    removeSelectedProduct();
   };
 
   return (
     <div className="single-product-info">
+      <div className="close" onClick={handleClose}>
+        <IconClose />
+      </div>
+
       <div className="product-image">
         <img src={image} alt={name} />
       </div>

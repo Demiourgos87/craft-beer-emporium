@@ -22,16 +22,3 @@
   height: 80vh;
   position: relative;
 }
-
-.page-title {
-  font-size: 32px;
-  margin-top: 32px;
-  margin-bottom: 24px;
-  text-align: center;
-
-  @media screen and (min-width: $breakpoint-lt-mobile) {
-    font-size: 40px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-}

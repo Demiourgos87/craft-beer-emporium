@@ -8,13 +8,14 @@ import './product-grid.scss';
 
 type ProductGridProps = {
   products: Product[];
+  onProductCLick: (id: number) => void;
 };
 
-const ProductGrid = ({ products }: ProductGridProps) => {
+const ProductGrid = ({ products, onProductCLick }: ProductGridProps) => {
   return (
     <div className="product-grid">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} onProductClick={onProductCLick} />
       ))}
     </div>
   );

@@ -4,6 +4,9 @@ import { getProducts } from '../api/api';
 
 type ProductState = {
   products: Product[] | null;
+  selectedProduct: Product | null;
+  setSelectedProduct: (product: Product | undefined) => void;
+  removeSelectedProduct: () => void;
   setProducts: (products: Product[] | null) => void;
   fetchProducts: () => Promise<void>;
   getProductById: (id: string) => Product | undefined;
@@ -15,6 +18,13 @@ type ProductState = {
 export const useProductStore = create<ProductState>((set, get) => ({
   products: null,
   cart: [],
+  selectedProduct: null,
+  setSelectedProduct: (product) => {
+    set({ selectedProduct: product });
+  },
+  removeSelectedProduct: () => {
+    set({ selectedProduct: null });
+  },
   setProducts: (products) => set({ products }),
   fetchProducts: async () => {
     try {

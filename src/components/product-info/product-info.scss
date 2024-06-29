@@ -1,8 +1,19 @@
 @import '../../styles/variables.scss';
 
 .single-product-info {
+  position: relative;
+  padding: 20px;
+
   @media screen and (min-width: $breakpoint-lt-mobile) {
     display: flex;
+    padding: 40px;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
   }
 
   .separator {

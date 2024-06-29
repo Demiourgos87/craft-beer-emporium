@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Product } from '../../constants/types';
 
 // components
@@ -10,9 +9,10 @@ import { useProductStore } from '../../store/product-store';
 
 type ProductCardProps = {
   product: Product;
+  onProductClick: (id: number) => void;
 };
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, onProductClick }: ProductCardProps) => {
   const {
     id,
     name,
@@ -22,13 +22,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
   } = product;
   const addToCart = useProductStore((state) => state.addToCart);
 
+  const handleProductClick = (id: number) => {
+    onProductClick(id);
+  };
+
   const handleAddToCart = () => {
     addToCart(product);
   };
 
   return (
     <div className="product-card">
-      <Link to={`/product/${id}`}>
+      <div className="product-card-content" onClick={() => handleProductClick(id)}>
         <img className="product-image" src={image} alt={name} />
 
         <div className="product-info">
@@ -38,7 +42,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </p>
           <p className="product-price">Price: {price}</p>
         </div>
-      </Link>
+      </div>
 
       <Button
         text="Add to cart"

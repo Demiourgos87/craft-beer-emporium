@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 // hooks
 import { useProductStore } from '../../store/product-store';
 
@@ -22,10 +20,6 @@ const Header = () => {
         {cart.length !== 0 && <div className="cart-indicator">{cart.length}</div>}
         <IconCart width="35px" height="35px" />
       </div>
-
-      <Link to={'/manage'} className="manage">
-        Manage
-      </Link>
     </div>
   );
 };
