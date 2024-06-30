@@ -7,6 +7,9 @@ The component should contain a list of products which can be sorted and filtered
 Clicking on a product opens the product view with information.
 There is also a management view, and the ability to add a new product.
 
+The project is deployed to Vercel, and can be accessed at:
+[https://craft-beer-emporium.vercel.app/](Craft Beer Emporium)
+
 ## Technologies Used
 
 - **React**: A JavaScript library for building user interfaces.
