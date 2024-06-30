@@ -1,0 +1,42 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px 8px rgba(#000000, 0.1);
+  }
+
+  &-content {
+    cursor: pointer;
+  }
+
+  .product {
+    &-image {
+      display: block;
+      margin: auto;
+    }
+
+    &-info {
+      margin-top: 24px;
+    }
+
+    &-name {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    &-rating {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    &-price {
+      font-weight: bold;
+    }
+  }
+}

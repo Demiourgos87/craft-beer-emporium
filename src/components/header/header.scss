@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 24px 4%;
+  background-color: $color-primary;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  .brand {
+    &-logo {
+      width: 80px;
+      margin-right: 24px;
+      border-radius: 12px;
+
+      @media screen and (min-width: $breakpoint-lt-mobile) {
+        width: 100px;
+      }
+    }
+
+    &-name {
+      color: $color-secondary;
+      font-size: 32px;
+
+      @media screen and (min-width: $breakpoint-lt-mobile) {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .manage {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #ffffff;
+    padding: 16px;
+    box-shadow: 0 2px 4px 4px rgba(#000000, 0.1);
+    cursor: pointer;
+  }
+
+  .cart {
+    position: absolute;
+    bottom: 10px;
+    right: 24px;
+
+    .cart-indicator {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(255, 67, 67);
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+      color: #ffffff;
+    }
+  }
+}

@@ -1,30 +1,52 @@
-# React + TypeScript + Vite
+# Craft Beer Emporium
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains an assignment completed as part of a job interview.
+The task was to create a reusable component for a shop called Craft Beer Emporium.
+The component should contain a list of products which can be sorted and filtered.
 
-Currently, two official plugins are available:
+Clicking on a product opens the product view with information.
+There is also a management view, and the ability to add a new product.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **SCSS**: A preprocessor scripting language that is interpreted or compiled into CSS.
+- **Jest**: A delightful JavaScript testing framework with a focus on simplicity.
+- **React Testing Library**: A library for testing React components.
+- **ESLint and Prettier**: Solutions for code formatting.
+- **Vite**: Project setup
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Setup
 
-- Configure the top-level `parserOptions` property like this:
+To run this project locally, follow these steps:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. **Clone the repository**:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+   ```bash
+   git clone git@github.com:Demiourgos87/craft-beer-emporium.git
+   cd craft-beer-emporium
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Run tests**:
+   ```bash
+   npm test
+   ```
+
+## Features
+
+- **Responsive Design**: The application is responsive and works well on different screen sizes.
+- **State Management**: Uses Zustand for managing global state.
+- **Testing**: Includes unit tests using Jest and React Testing Library.

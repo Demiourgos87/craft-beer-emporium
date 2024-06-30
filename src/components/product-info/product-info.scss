@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+
+.single-product-info {
+  position: relative;
+  padding: 20px;
+
+  @media screen and (min-width: $breakpoint-lt-mobile) {
+    display: flex;
+    padding: 40px;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+
+  .separator {
+    width: 100%;
+    height: 1px;
+    margin: 24px 0;
+    background-color: rgb(231, 231, 231);
+  }
+
+  .product {
+    &-image {
+      margin-bottom: 24px;
+
+      @media screen and (min-width: $breakpoint-lt-mobile) {
+        width: 47%;
+        margin-right: 6%;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &-data {
+      @media screen and (min-width: $breakpoint-lt-mobile) {
+        width: 47%;
+      }
+    }
+
+    &-name {
+      font-size: 32px;
+      color: $color-primary;
+    }
+
+    &-price {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    &-rating {
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    &-description {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+}
